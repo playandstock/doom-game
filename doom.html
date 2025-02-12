@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DOOM - GitHub Pages</title>
-  <!-- js-dos v8 스타일 시트 -->
+  <!-- js-dos 스타일 시트 -->
   <link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
-  <!-- js-dos v8 스크립트 -->
-  <script src="https://v8.js-dos.com/latest/js-dos.js"></script>
+  <!-- js-dos 스크립트 (로컬 경로) -->
+  <script src="js-dos.js"></script>
   <style>
     body {
       display: flex;
@@ -35,8 +35,10 @@
   <h1>🎮 GitHub Pages에서 DOOM을 플레이하세요! 🎮</h1>
   <div id="dosbox"></div>
   <script>
-    JSdosbox(document.getElementById("dosbox")).then((dosbox) => {
-      dosbox.run("https://playandstock.github.io/doom-game/doom.jsdos");
+    window.addEventListener("load", function () {
+      JSdosbox(document.getElementById("dosbox")).then((dosbox) => {
+        dosbox.run("doom.jsdos");
+      });
     });
   </script>
 </body>
