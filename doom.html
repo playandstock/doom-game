@@ -4,10 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DOOM - GitHub Pages</title>
-  <!-- js-dos 스타일 시트 -->
   <link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
-  <!-- js-dos 스크립트 (로컬 경로) -->
-  <script src="js-dos-full.js"></script>
+  <script src="js-dos-full.js"></script> <!-- 로컬 js-dos-full.js -->
   <style>
     body {
       display: flex;
@@ -36,8 +34,12 @@
   <div id="dosbox"></div>
   <script>
     window.addEventListener("load", function () {
-      JSdosbox(document.getElementById("dosbox")).then((dosbox) => {
-        dosbox.run("doom.jsdos");
+      Dos(document.getElementById("dosbox")).then(function (runtime) {
+        runtime.fs.extract("doom.jsdos").then(function () {
+          runtime.main(["-c", "doom.exe"]);
+        });
+      }).catch(function (e) {
+        console.error("DOOM 실행 중 오류 발생:", e);
       });
     });
   </script>
